@@ -1,103 +1,91 @@
-import Image from "next/image";
+'use client';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import Navbar from '@/components/Navbar';
+import AboutSection from '@/components/AboutSection';
+import ProjectsSection from '@/components/ProjectsSection';
+import ExperienceSection from '@/components/ExperienceSection';
+import ServicesSection from '@/components/ServicesSection';
+import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+    <>
+      <Navbar />
+      <main className="min-h-screen bg-[#09090b]">
+        {/* Hero Section */}
+        <section
+          id="home"
+          className="relative flex flex-col justify-center min-h-[90vh] px-4 md:px-0"
+        >
+          <div className="max-w-7xl mx-10 w-full flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0">
+            {/* Left: Text */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+              className="flex-1 flex flex-col items-start justify-center md:pr-12"
+            >
+              <h1
+                className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-8"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                Vigyansh Chugh
+              </h1>
+              <h2
+                className="text-2xl md:text-3xl font-medium text-slate-200 mb-6"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                Front-end Developer
+              </h2>
+              <p
+                className="text-lg md:text-xl text-slate-400 mb-10 max-w-xl"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                I build modern, responsive, and accessible web applications
+                using React.js, Next.js, and Tailwind CSS. Currently at{' '}
+                <span className="text-blue-400 font-semibold">
+                  VSS Technologies
+                </span>{' '}
+                in Sydney, Australia.
+              </p>
+              <a
+                href="#contact"
+                className="inline-block px-8 py-3 rounded-full bg-white/10 border border-white/20 text-white font-semibold hover:bg-blue-600 hover:text-white transition-colors shadow-lg backdrop-blur"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                Let&apos;s Talk
+              </a>
+            </motion.div>
+            {/* Right: Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+              className="flex-1 flex items-center justify-center w-full md:w-auto"
+            >
+              <div className="relative w-72 h-72 md:w-[420px] md:h-[420px] rounded-full overflow-hidden bg-gradient-to-b from-[#232526] to-[#181a1b] shadow-2xl flex items-center justify-center">
+                <Image
+                  src="/hero.jpg"
+                  alt="Vigyansh Chugh portrait"
+                  fill
+                  className="object-cover object-center grayscale contrast-125"
+                  priority
+                />
+                {/* Soft dark overlay for blending */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#181a1b] opacity-80" />
+              </div>
+            </motion.div>
+          </div>
+        </section>
+        <AboutSection />
+        <ProjectsSection />
+        <ExperienceSection />
+        <ServicesSection />
+        <ContactSection />
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      <Footer />
+    </>
   );
 }
