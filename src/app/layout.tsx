@@ -6,13 +6,13 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('http://localhost:3000'),
-  title: 'Your Name - Portfolio',
+  title: 'Vigyansh Chugh - Portfolio',
   description:
     'Professional portfolio showcasing web development and design work',
   keywords: 'web development, frontend developer, portfolio, react, next.js',
   authors: [{ name: 'Your Name' }],
   openGraph: {
-    title: 'Your Name - Portfolio',
+    title: 'Vigyansh Chugh - Portfolio',
     description:
       'Professional portfolio showcasing web development and design work',
     type: 'website',
@@ -27,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth dark">
-      <body className={`${inter.className} bg-slate-900 text-slate-50`}>
+      <body className={`${inter.className} bg-black text-slate-300`}>
         {children}
       </body>
     </html>

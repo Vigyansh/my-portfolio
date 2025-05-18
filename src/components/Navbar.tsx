@@ -17,16 +17,16 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full z-50 bg-slate-900/80 backdrop-blur-sm">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+    <nav className="fixed w-full z-50 bg-gradient-to-r from-black via-slate-400 to-slate-800 backdrop-blur-xl">
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between h-14">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <a href="#" className="text-xl font-bold text-slate-50">
-              YourName
+            <a href="#" className="text-3xl font-allison text-slate-200">
+              Vigyansh Chugh
             </a>
           </motion.div>
 
@@ -37,7 +37,7 @@ export default function Navbar() {
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  className="text-slate-300 hover:text-slate-50 transition-colors"
+                  className="text-slate-200 font-iceberg hover:text-slate-50 transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -51,7 +51,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-slate-300 hover:text-slate-50"
+              className="text-slate-200 hover:text-slate-50"
             >
               {isOpen ? (
                 <XMarkIcon className="h-6 w-6" />
@@ -75,7 +75,7 @@ export default function Navbar() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-slate-50 hover:bg-slate-800"
+                  className="block px-3 py-2 rounded-md text-base font-medium font-iceberg text-slate-200 hover:text-slate-50"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}

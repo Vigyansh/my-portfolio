@@ -1,5 +1,6 @@
 'use client';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 import SectionTitle from './SectionTitle';
 
 interface Experience {
@@ -47,12 +48,16 @@ const experiences: Experience[] = [
 ];
 
 export default function ExperienceSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   return (
-    <section id="experience" className="py-20 bg-slate-900">
+    <section id="experience" className="py-20 bg-slate-100">
       <div className="container mx-auto px-4">
         <SectionTitle
           title="Work Experience"
           subtitle="My professional journey and achievements"
+          theme="light"
         />
 
         <div className="relative">
@@ -66,6 +71,9 @@ export default function ExperienceSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+                }
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={`relative flex flex-col md:flex-row ${
                   index % 2 === 0 ? 'md:flex-row-reverse' : ''
@@ -76,15 +84,15 @@ export default function ExperienceSection() {
 
                 {/* Content */}
                 <div className="md:w-1/2 px-4">
-                  <div className="bg-slate-900 p-6 rounded-lg shadow-lg">
-                    <h3 className="text-xl font-bold text-slate-50 mb-2">
+                  <div className="bg-black p-6 rounded-lg shadow-xl">
+                    <h3 className="text-xl font-bold text-slate-300 mb-2">
                       {experience.title}
                     </h3>
-                    <p className="text-slate-300 font-medium mb-2">
+                    <p className="text-slate-200 font-medium mb-2">
                       {experience.company}
                     </p>
-                    <p className="text-slate-300 mb-4">{experience.period}</p>
-                    <ul className="list-disc list-inside space-y-2 mb-4 text-slate-300">
+                    <p className="text-slate-200 mb-4">{experience.period}</p>
+                    <ul className="list-disc list-inside space-y-2 mb-4 text-slate-100">
                       {experience.description.map((item, i) => (
                         <li key={i}>{item}</li>
                       ))}

@@ -24,7 +24,7 @@ const socialLinks = [
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="py-20 bg-slate-900">
+    <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <SectionTitle
           title="Get in Touch"
