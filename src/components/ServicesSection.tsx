@@ -57,9 +57,9 @@ const services: Service[] = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-20 bg-black">
+    <section id="services" className="py-20 bg-slate-100">
       <div className="container mx-auto px-4">
-        <SectionTitle title="Services We Provide" subtitle="What I can do for you" />
+        <SectionTitle title="Services We Provide" subtitle="What I can do for you" theme='light' />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
@@ -69,16 +69,16 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-slate-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              className="bg-black p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
             >
-              <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center mb-4">
-                <service.icon className="w-6 h-6 text-slate-200 animate-bounce transition-all duration-1000" />
+              <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4">
+                <service.icon className="w-6 h-6 text-slate-950 animate-out transition-all duration-1000" />
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-2"
+              <h3 className="text-xl font-bold text-slate-300 mb-2"
               >
                 {service.title}
               </h3>
-              <p className="text-slate-800">
+              <p className="text-slate-200">
                 {service.description}
               </p>
             </motion.div>

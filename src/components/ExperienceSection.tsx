@@ -52,12 +52,12 @@ export default function ExperienceSection() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section id="experience" className="py-20 bg-slate-100">
+    <section id="experience" className="py-20 bg-black">
       <div className="container mx-auto px-4">
         <SectionTitle
           title="Work Experience"
           subtitle="My professional journey and achievements"
-          theme="light"
+          theme="dark"
         />
 
         <div className="relative">
@@ -84,15 +84,15 @@ export default function ExperienceSection() {
 
                 {/* Content */}
                 <div className="md:w-1/2 px-4">
-                  <div className="bg-black p-6 rounded-lg shadow-xl">
-                    <h3 className="text-xl font-bold text-slate-300 mb-2">
+                  <div className="bg-slate-100 p-6 rounded-lg shadow-xl">
+                    <h3 className="text-xl font-bold text-slate-800 mb-2">
                       {experience.title}
                     </h3>
-                    <p className="text-slate-200 font-medium mb-2">
+                    <p className="text-slate-700 font-medium mb-2">
                       {experience.company}
                     </p>
-                    <p className="text-slate-200 mb-4">{experience.period}</p>
-                    <ul className="list-disc list-inside space-y-2 mb-4 text-slate-100">
+                    <p className="text-slate-700 mb-4">{experience.period}</p>
+                    <ul className="list-disc list-inside space-y-2 mb-4 text-slate-600">
                       {experience.description.map((item, i) => (
                         <li key={i}>{item}</li>
                       ))}

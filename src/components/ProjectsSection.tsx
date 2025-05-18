@@ -32,11 +32,12 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-20 bg-black">
+    <section id="projects" className="py-20 bg-slate-100">
       <div className="container mx-auto px-4">
         <SectionTitle
           title="Selected Works"
           subtitle="A few projects I've recently built or contributed to."
+          theme='light'
         />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((project, index) => (

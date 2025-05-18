@@ -1,9 +1,17 @@
-import SectionTitle from '../components/SectionTitle';
-import SkillCard from '../components/SkillCard';
-import { motion } from 'framer-motion';
+'use client';
+
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import { FaCode, FaDesktop, FaTools, FaDatabase } from 'react-icons/fa';
+import SectionTitle from './SectionTitle';
 
 const SkillsSection = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
+
   const skillCategories = [
     {
       title: 'Languages & Frameworks',
@@ -54,87 +62,92 @@ const SkillsSection = () => {
         'REST APIs',
         'GraphQL',
         'Performance Optimization',
-        'Server-Side Rendering',
+        'SSR',
+      ],
+    },
+    {
+      title: 'Soft Skills',
+      icon: <FaDatabase />,
+      skills: [
+        'Problem-Solving',
+        'Attention to Detail',
+        'Communication',
+        'Collaboration',
+        'Adaptability',
+        'Time Management',
+        'Creativity',
       ],
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
   return (
-    <section id="skills" className="container my-16 bg-black">
-      <div className="section-container">
-        <SectionTitle
-          title="Technical Skills"
-          subtitle="My expertise in various technologies, tools, and methodologies."
-        />
+    <section
+      ref={containerRef}
+      className="relative py-12 bg-black overflow-hidden"
+    >
+      <div className="container mx-auto px-6 flex flex-col lg:flex-row lg:items-start">
+        {/* Left: Heading & Description */}
+        <div className="lg:w-1/2 flex-1 items-center justify-center sticky top-16">
+          <SectionTitle
+                    title="Skills & Technologies"
+                    subtitle="My expertise in various technologies, tools, and workflows"
+                    theme="dark"
+                  />
+          <p className="text-md text-slate-200 font-inter">
+            From frontend frameworks and UI design to deployment and
+            optimization — here’s what I bring to the table.
+          </p>
+        </div>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {skillCategories.map((category) => (
-            <motion.div key={category.title} variants={itemVariants}>
-              <SkillCard
-                title={category.title}
-                icon={category.icon}
-                skills={category.skills}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* Right: Cards stacking animation */}
+        <div className="lg:w-1/2 relative h-[200vh] mt-16 lg:mt-0">
+          <div className="top-32 h-[70vh] w-full flex items-center justify-center">
+            <div className="relative w-full max-w-xl h-[360px]">
+              {skillCategories.map((category, index) => {
+                const y = useTransform(
+                  scrollYProgress,
+                  [0, 1],
+                  [index * 200, -index * 10]
+                );
+                const zIndex = skillCategories.length - -index;
 
-        <motion.div
-          className="my-16 bg-slate-100 rounded-lg p-8 shadow-md"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <h3 className="text-2xl font-bold mb-4 text-center text-slate-800">
-            Soft Skills
-          </h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              'Problem-Solving',
-              'Attention to Detail',
-              'Communication',
-              'Collaboration',
-              'Adaptability',
-              'Time Management',
-              'Creativity',
-            ].map((skill) => (
-              <span
-                key={skill}
-                className="px-4 py-2 text-slate-200 bg-black rounded-full text-sm"
-              >
-                {skill}
-              </span>
-            ))}
+                return (
+                  <motion.div
+                    key={category.title}
+                    className="left-0 w-full px-4"
+                    style={{ y, zIndex }}
+                  >
+                    <motion.div
+                      className="bg-slate-100 rounded-xl shadow-lg p-6 h-fit flex flex-col justify-start"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4 }}
+                    >
+                      <div className="flex items-center mb-4">
+                        <div className="text-black mr-3 text-3xl border-4 p-2 border-slate-800 rounded-full bg-slate-100">
+                          {category.icon}
+                        </div>
+                        <h3 className="text-xl font-bold text-slate-800">
+                          {category.title}
+                        </h3>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {category.skills.map((skill) => (
+                          <span
+                            key={skill}
+                            className="bg-black text-slate-200 px-3 py-1 rounded text-sm"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
