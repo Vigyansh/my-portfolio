@@ -11,7 +11,7 @@ const socialLinks = [
   {
     name: 'LinkedIn',
     icon: <Linkedin className="w-6 h-6" />,
-    href: 'www.linkedin.com/in/vigyansh-chugh-934aa29b',
+    href: 'https://www.linkedin.com/in/vigyansh-chugh-934aa29b/',
   },
   // {
   //   name: 'Instagram',
@@ -51,4 +51,3 @@ export default function Footer() {
     </footer>
   );
 }
-
