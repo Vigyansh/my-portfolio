@@ -44,6 +44,14 @@ export default function Navbar() {
                   {item.name}
                 </motion.a>
               ))}
+              <a
+              href="/Vigyansh-Chugh-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-1 text-lg font-chillax font-thin bg-slate-100 ring-2 text-slate-800 rounded border-2 border-white/20 transition-transform duration-500 shadow-lg backdrop-blur hover:scale-105 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]"
+            >
+              View Full Resume
+            </a>
             </div>
           </div>
 
@@ -80,8 +88,18 @@ export default function Navbar() {
                 >
                   {item.name}
                 </a>
+                
               ))}
+              <a
+              href="/Vigyansh-Chugh-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-1 text-lg font-chillax font-thin bg-slate-100 ring-2 text-slate-800 rounded border-2 border-white/20 transition-transform duration-500 shadow-lg backdrop-blur hover:scale-105 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]"
+            >
+              View Full Resume
+            </a>
             </div>
+            
           </motion.div>
         )}
       </div>

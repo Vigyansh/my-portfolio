@@ -2,9 +2,11 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import SectionTitle from './SectionTitle';
+import { FaBriefcase, FaGraduationCap } from 'react-icons/fa';
 
 interface Experience {
   title: string;
+  type: 'work' | 'academic';
   company: string;
   period: string;
   description: string[];
@@ -13,37 +15,55 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    title: 'Senior Frontend Developer',
-    company: 'Tech Company A',
-    period: '2021 - Present',
+    title: 'FullStack Developer',
+    type: 'work',
+    company: 'VSS Technologies Pvt. Ltd.',
+    period: 'January 2025 – Present',
     description: [
-      'Led the development of a new customer portal using Next.js and TypeScript',
-      'Implemented responsive designs and optimized performance',
-      'Mentored junior developers and conducted code reviews',
+      'Built and maintained production-grade web applications using React.js, Next.js, and Tailwind CSS.',
+      'Contributed to the development of BrainTree Coaching – a large-scale educational platform deployed on Vercel.',
+      'Focused on performance optimization, SSR, accessibility, and clean UI implementation.',
     ],
-    technologies: ['Next.js', 'TypeScript', 'React', 'Tailwind CSS'],
+    technologies: [
+      'React.js',
+      'Next.js',
+      'Tailwind CSS',
+      'Framer Motion',
+      'sanity.io',
+      'Vercel',
+      'AWS',
+    ],
   },
   {
-    title: 'Full Stack Developer',
-    company: 'Startup B',
-    period: '2019 - 2021',
+    title: 'Capstone Project – QR Code Attendance System',
+    type: 'academic',
+    company: 'University of Wollongong',
+    period: 'February 2024 - November 2024',
     description: [
-      'Developed and maintained multiple web applications',
-      'Collaborated with designers to implement UI/UX improvements',
-      'Integrated third-party APIs and services',
+      'Developed a QR code-based attendance system with geolocation validation.',
+      'Built a secure admin dashboard for session management and attendance logs.',
+      'Deployed on Microsoft Azure with scalable backend and session handling.',
     ],
-    technologies: ['React', 'Node.js', 'MongoDB', 'AWS'],
+    technologies: ['JavaScript', 'HTML', 'CSS', 'PHP', 'Azure', 'MongoDB'],
   },
   {
-    title: 'Frontend Developer',
-    company: 'Agency C',
-    period: '2018 - 2019',
+    title: 'Course Project – Eats Nearby',
+    type: 'academic',
+    company: 'University of Wollongong',
+    period: 'August 2023 - November 2023',
     description: [
-      'Built responsive websites for various clients',
-      'Implemented animations and interactive features',
-      'Optimized website performance and SEO',
+      'Created a mobile-first food ordering app tailored for university campuses.',
+      'Built with Django and REST API architecture including secure JWT auth.',
+      'Used Locust to test and optimize backend performance under real load.',
     ],
-    technologies: ['JavaScript', 'HTML', 'CSS', 'jQuery'],
+    technologies: [
+      'Django',
+      'Python',
+      'JWT',
+      'REST API',
+      'PostgreSQL',
+      'Locust',
+    ],
   },
 ];
 
@@ -56,7 +76,7 @@ export default function ExperienceSection() {
       <div className="container mx-auto px-4">
         <SectionTitle
           title="Work Experience"
-          subtitle="My professional journey and achievements"
+          subtitle="My journey across roles, real-world contributions, and hands-on achievements in web development"
           theme="dark"
         />
 
@@ -85,14 +105,21 @@ export default function ExperienceSection() {
                 {/* Content */}
                 <div className="md:w-1/2 px-4">
                   <div className="bg-slate-100 p-6 rounded-lg shadow-xl">
-                    <h3 className="text-xl font-bold text-slate-800 mb-2">
-                      {experience.title}
-                    </h3>
-                    <p className="text-slate-700 font-medium mb-2">
+                    <div className="flex items-center gap-2 mb-1">
+                      {experience.type === 'work' ? (
+                        <FaBriefcase className="text-slate-600" />
+                      ) : (
+                        <FaGraduationCap className="text-slate-600" />
+                      )}
+                      <h3 className="text-xl font-bold text-slate-800">
+                        {experience.title}
+                      </h3>
+                    </div>
+                    <p className="text-slate-700 font-semibold mb-2">
                       {experience.company}
                     </p>
                     <p className="text-slate-700 mb-4">{experience.period}</p>
-                    <ul className="list-disc list-inside space-y-2 mb-4 text-slate-600">
+                    <ul className="list-disc list-outside space-y-2 mb-4 text-slate-600">
                       {experience.description.map((item, i) => (
                         <li key={i}>{item}</li>
                       ))}

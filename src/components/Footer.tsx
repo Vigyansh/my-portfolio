@@ -11,13 +11,13 @@ const socialLinks = [
   {
     name: 'LinkedIn',
     icon: <Linkedin className="w-6 h-6" />,
-    href: 'https://linkedin.com/in/yourusername',
+    href: 'www.linkedin.com/in/vigyansh-chugh-934aa29b',
   },
-  {
-    name: 'Instagram',
-    icon: <Instagram className="w-6 h-6" />,
-    href: 'https://twitter.com/yourusername',
-  },
+  // {
+  //   name: 'Instagram',
+  //   icon: <Instagram className="w-6 h-6" />,
+  //   href: 'https://twitter.com/yourusername',
+  // },
 ];
 
 export default function Footer() {

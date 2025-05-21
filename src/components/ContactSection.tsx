@@ -1,4 +1,5 @@
 'use client';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   EnvelopeIcon,
@@ -10,25 +11,45 @@ import SectionTitle from './SectionTitle';
 const socialLinks = [
   {
     name: 'GitHub',
-    href: 'https://github.com/yourusername',
+    href: 'https://github.com/Vigyansh',
   },
   {
     name: 'LinkedIn',
-    href: 'https://linkedin.com/in/yourusername',
-  },
-  {
-    name: 'Twitter',
-    href: 'https://twitter.com/yourusername',
+    href: 'https://www.linkedin.com/in/vigyansh-chugh-934aa29b/',
   },
 ];
 
 export default function ContactSection() {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const response = await fetch('https://formspree.io/f/mjkwdvgq', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      setSubmitted(true);
+      form.reset();
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 bg-black">
       <div className="container mx-auto px-4">
         <SectionTitle
           title="Get in Touch"
-          subtitle="Let's discuss your next project"
+          subtitle="Let’s create something impactful together"
           theme="dark"
         />
 
@@ -49,7 +70,7 @@ export default function ContactSection() {
                 <div className="flex items-center space-x-4">
                   <EnvelopeIcon className="w-6 h-6 text-slate-200" />
                   <a
-                    href="mailto:your.email@example.com"
+                    href="mailto:cvigyansh@gmail.com"
                     className="text-slate-300 hover:text-slate-100"
                   >
                     cvigyansh@gmail.com
@@ -66,9 +87,7 @@ export default function ContactSection() {
                 </div>
                 <div className="flex items-center space-x-4">
                   <MapPinIcon className="w-6 h-6 text-slate-200" />
-                  <span className="text-slate-300">
-                    Sydney, NSW, Australia
-                  </span>
+                  <span className="text-slate-300">Sydney, NSW, Australia</span>
                 </div>
               </div>
             </div>
@@ -84,7 +103,7 @@ export default function ContactSection() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-slate-100 rounded-2xl px-2 flex items-center justify-center hover:bg-slate-300 transition-colors text-slate-800"
+                    className="inline-block px-6 py-2 font-chillax rounded text-lg bg-white/10 border border-white/20 text-slate-100 font-thin transition-transform duration-500 shadow-lg backdrop-blur hover:scale-105 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]"
                   >
                     {social.name}
                   </a>
@@ -100,14 +119,8 @@ export default function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <form className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-slate-300 mb-2"
-                >
-                  
-                </label>
+            {!submitted ? (
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <input
                   type="text"
                   id="name"
@@ -116,30 +129,16 @@ export default function ContactSection() {
                   className="w-full px-4 py-2 border border-slate-700 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent bg-slate-200 text-slate-600"
                   required
                 />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-slate-300 mb-2"
-                >
-                  
-                </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   placeholder="Your Email"
+                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                  title="Please enter a valid email address"
                   className="w-full px-4 py-2 border border-slate-700 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent bg-slate-200 text-slate-600"
                   required
                 />
-              </div>
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-slate-300 mb-2"
-                >
-                  
-                </label>
                 <textarea
                   id="message"
                   name="message"
@@ -148,14 +147,19 @@ export default function ContactSection() {
                   className="w-full px-4 py-2 border border-slate-700 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent bg-slate-200 text-slate-600"
                   required
                 />
+                <button
+                  type="submit"
+                  className="inline-block px-6 py-2 w-full font-chillax rounded-full text-lg bg-white/10 border border-white/20 text-slate-100 font-thin transition-transform duration-500 shadow-lg backdrop-blur hover:scale-105 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]"
+                >
+                  Send Message
+                </button>
+              </form>
+            ) : (
+              <div className="bg-slate-100 text-slate-800 border border-slate-500 rounded-lg p-6 text-center shadow-lg">
+                <h3 className="text-xl font-bold mb-2">Thank you!</h3>
+                <p>I've received your message and will get back to you soon.</p>
               </div>
-              <button
-                type="submit"
-                className="w-full px-6 py-3 bg-slate-400 text-slate-800 font-semibold rounded-lg hover:bg-slate-600 transition-colors"
-              >
-                Send Message
-              </button>
-            </form>
+            )}
           </motion.div>
         </div>
       </div>

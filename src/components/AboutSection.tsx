@@ -2,91 +2,114 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import SectionTitle from './SectionTitle';
+import { Briefcase, GraduationCap, Rocket, BookOpen } from 'lucide-react';
 
 export default function AboutSection() {
-  const skills = [
-    'React',
-    'Next.js',
-    'JavaScript',
-    'HTML',
-    'CSS',
-    'Tailwind CSS',
-    'TypeScript',
-    'Node.js',
-    'GraphQL',
-    'MongoDB',
-    'AWS',
-  ];
-
   return (
     <section id="about" className="py-20 bg-slate-100">
-      <div className="mx-auto px-4">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 xl:max-w-fit">
+        {/* Section Title */}
         <SectionTitle
           title="About Me"
-          subtitle="Get to know more about my background and expertise"
+          subtitle="Passionate Frontend Developer crafting accessible, performant, and scalable web experiences"
           theme="light"
         />
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        {/* Top Section: Image + Text */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center mt-12">
+          {/* Image */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="relative w-40 h-40 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-black shadow-xl bg-slate-800 mx-auto"
-            style={{ boxShadow: '0 8px 32px 0 #2563eb55' }}
+            className="relative w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 xl:w-[410px] xl:h-[410px] rounded-3xl overflow-hidden mx-auto"
           >
             <Image
-              src="/about.png"
+              src="/about.webp"
               alt="Vigyansh Chugh portrait"
               fill
+              sizes="(max-width: 1024px) 80vw, 480px"
               className="object-cover object-center"
               priority
             />
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-transparent to-slate-900/80 pointer-events-none" />
+            <div className="absolute bg-gradient-to-b from-transparent to-slate-900/70 pointer-events-none" />
           </motion.div>
 
+          {/* Intro Text */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="space-y-6"
+            className="space-y-6 text-slate-700"
           >
-            <h3 className="text-2xl font-bold text-slate-800">Vigyansh Chugh</h3>
-            <p className="text-slate-700">
-              I'm a front-end developer based in Sydney, Australia, currently
-              working at{' '}
-              <span className="text-gr font-semibold">
-                VSS Technologies
-              </span>
-              . I specialize in building modern, responsive, and accessible web
-              applications using React.js, Next.js, Tailwind CSS, and
-              JavaScript.
-            </p>
-            <p className="text-slate-700">
-              I have 2+ years of experience in Web development and a Master's degree in Information
-              Technology from the University of Wollongong. My focus is on clean
-              UI, performance, scalability, and accessibility. I thrive in Agile
-              teams and love collaborating on innovative projects.
+            <h3 className="text-2xl sm:text-3xl font-bold text-slate-800">Vigyansh Chugh</h3>
+
+            <p className="text-base md:text-lg leading-relaxed">
+              I’m <strong>Vigyansh Chugh</strong>, a dedicated <strong>Front-End Developer</strong> based in <strong>Sydney, Australia</strong>, with over <strong>2 years of experience</strong> building responsive, performance-driven web applications using <strong>React.js</strong>, <strong>Next.js</strong>, and <strong>Tailwind CSS</strong>.
             </p>
 
-            <div>
-              <h4 className="text-xl font-semibold mb-4 text-slate-800">
-                Skills & Technologies
-              </h4>
-              <ul className="grid grid-cols-2 gap-2 text-slate-600 text-sm">
-                <li>HTML5, CSS3, JavaScript (ES6+), TypeScript</li>
-                <li>React.js, Next.js, Tailwind CSS, Bootstrap</li>
-                <li>Responsive Design, UI/UX Implementation</li>
-                <li>Redux, Context API</li>
-                <li>Performance: Lazy Loading, SSR, Code Splitting</li>
-                <li>Testing: Jest, React Testing Library</li>
-                <li>Tools: Git, GitHub, Vercel, Netlify, JIRA, Confluence</li>
-                <li>Design: Figma, Adobe XD</li>
-              </ul>
-            </div>
+            <p className="text-base md:text-lg leading-relaxed pb-4">
+              My passion lies in transforming creative ideas into functional, accessible, and SEO-optimized user experiences. At <strong>VSS Technologies</strong>, I’ve contributed to production-grade apps by implementing modern performance techniques like lazy loading, SSR, and modular architecture.
+            </p>
+
+            <a
+              href="/Vigyansh-Chugh-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-1 text-lg font-chillax font-thin bg-slate-100 ring-2 text-slate-800 rounded border-2 border-white/20 transition-transform duration-500 shadow-lg backdrop-blur hover:scale-105 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]"
+            >
+              View Full Resume
+            </a>
           </motion.div>
+        </div>
+
+        {/* Highlight Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+          {/* Card 1 */}
+          <div className="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+            <div className="text-blue-600 mb-3">
+              <Briefcase size={28} />
+            </div>
+            <h4 className="text-lg font-semibold text-slate-800 mb-2">Professional Experience</h4>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Developed production-ready apps at <strong>VSS Technologies</strong> with a focus on clean architecture, component reusability, and performance-driven design.
+            </p>
+          </div>
+
+          {/* Card 2 */}
+          <div className="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+            <div className="text-blue-600 mb-3">
+              <GraduationCap size={28} />
+            </div>
+            <h4 className="text-lg font-semibold text-slate-800 mb-2">Education</h4>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Master’s degree in <strong>Information Technology</strong> from the <strong>University of Wollongong</strong>, with core expertise in modern web systems and software engineering.
+            </p>
+          </div>
+
+          {/* Card 3 */}
+          <div className="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+            <div className="text-blue-600 mb-3">
+              <Rocket size={28} />
+            </div>
+            <h4 className="text-lg font-semibold text-slate-800 mb-2">Tech & Growth</h4>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Continuously upskilling in areas like <strong>CMS</strong>, <strong>Shopify</strong>, <strong>WordPress</strong>, and backend logic to become a full-spectrum web developer.
+            </p>
+          </div>
+
+          {/* Card 4 */}
+          <div className="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+            <div className="text-blue-600 mb-3">
+              <BookOpen size={28} />
+            </div>
+            <h4 className="text-lg font-semibold text-slate-800 mb-2">Development Values</h4>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Emphasizing <strong>clean code</strong>, <strong>accessibility</strong>, <strong>performance</strong>, and user-first design in every project I build or contribute to.
+            </p>
+          </div>
         </div>
       </div>
     </section>

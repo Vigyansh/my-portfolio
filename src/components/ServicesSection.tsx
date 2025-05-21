@@ -18,39 +18,39 @@ interface Service {
 
 const services: Service[] = [
   {
-    title: 'Web Development',
+    title: 'Modern Web Development',
     description:
-      'Building modern, responsive websites and web applications using the latest technologies and best practices.',
+      'Building high-performance, SEO-friendly web applications using React.js, Next.js, and Tailwind CSS. Focused on scalability, accessibility, and responsive UI.',
     icon: CodeBracketIcon,
   },
   {
-    title: 'UI/UX Design',
+    title: 'UI/UX Design & Implementation',
     description:
-      'Creating beautiful and intuitive user interfaces that provide exceptional user experiences.',
+      'Creating clean, intuitive user experiences with tools like Figma and Adobe XD. Emphasis on responsive design, usability, and WCAG accessibility standards.',
     icon: PaintBrushIcon,
   },
   {
-    title: 'Mobile Development',
+    title: 'Cross-Platform Mobile Development',
     description:
-      'Developing cross-platform mobile applications that work seamlessly across all devices.',
+      'Designing responsive, mobile-first web applications that provide seamless experiences across smartphones, tablets, and desktops using modern front-end technologies.',
     icon: DevicePhoneMobileIcon,
   },
   {
     title: 'Performance Optimization',
     description:
-      'Optimizing website performance for faster loading times and better user experience.',
+      'Improving load speed and performance using Next.js SSR, lazy loading, image optimization, and code splitting. Enhanced Core Web Vitals and Lighthouse scores.',
     icon: RocketLaunchIcon,
   },
   {
-    title: 'Analytics & SEO',
+    title: 'SEO Strategy & Analytics',
     description:
-      'Implementing analytics and SEO best practices to improve visibility and track performance.',
+      'Implementing on-page SEO best practices with structured data, meta tags, and Open Graph. Integrated tools like Google Analytics and Search Console for tracking.',
     icon: ChartBarIcon,
   },
   {
-    title: 'Maintenance & Support',
+    title: 'Ongoing Maintenance & Support',
     description:
-      'Providing ongoing maintenance and support to ensure your website runs smoothly.',
+      'Providing regular updates, security patches, bug fixes, and CMS support to ensure your application remains reliable, secure, and up-to-date.',
     icon: WrenchScrewdriverIcon,
   },
 ];
@@ -59,9 +59,13 @@ export default function ServicesSection() {
   return (
     <section id="services" className="py-20 bg-slate-100">
       <div className="container mx-auto px-4">
-        <SectionTitle title="Services We Provide" subtitle="What I can do for you" theme='light' />
+        <SectionTitle
+          title="What I Offer"
+          subtitle="Custom frontend development, UI design, performance tuning, and SEO optimization using modern web technologies"
+          theme="light"
+        />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -72,15 +76,12 @@ export default function ServicesSection() {
               className="bg-black p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
             >
               <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mb-4">
-                <service.icon className="w-6 h-6 text-slate-950 animate-out transition-all duration-1000" />
+                <service.icon className="w-6 h-6 text-slate-950" />
               </div>
-              <h3 className="text-xl font-bold text-slate-300 mb-2"
-              >
+              <h3 className="text-xl font-bold text-slate-300 mb-2">
                 {service.title}
               </h3>
-              <p className="text-slate-200">
-                {service.description}
-              </p>
+              <p className="text-slate-200">{service.description}</p>
             </motion.div>
           ))}
         </div>

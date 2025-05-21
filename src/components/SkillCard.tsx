@@ -10,7 +10,7 @@ const SkillCard = ({ title, icon, skills }: SkillCardProps) => {
   return (
     <div className="bg-slate-100 rounded-lg shadow-md p-6 transition-all hover:shadow-lg">
       <div className="flex items-center mb-4">
-        <div className="text-black mr-3 text-3xl border-4 p-2 border-slate-800 rounded-full animate-in transition-all duration-1000 bg-slate-100">
+        <div className="text-slate-800 border-4 px-2 py-1 border-black rounded-lg mr-3 text-3xl animate-in transition-all duration-1000 bg-slate-100">
           {icon}
         </div>
         <h3 className="text-xl font-bold text-slate-800">{title}</h3>
