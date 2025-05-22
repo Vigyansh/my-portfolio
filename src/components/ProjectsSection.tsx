@@ -71,8 +71,8 @@ export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="py-20 bg-slate-100">
-      <div className="mx-auto px-4">
+    <section id="projects" className="max-w-[2150px] mx-auto 2xl:px-16 md:px-4 py-20 bg-slate-100">
+      <div className="px-4">
         <SectionTitle
           title="Selected Projects"
           subtitle="A few of the applications I've designed, developed, or contributed to."

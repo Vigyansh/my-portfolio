@@ -57,8 +57,11 @@ const services: Service[] = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-20 bg-slate-100">
-      <div className="container mx-auto px-4">
+    <section
+      id="services"
+      className="max-w-[2150px] mx-auto 2xl:px-16 md:px-4 py-20 bg-slate-100"
+    >
+      <div className="px-4">
         <SectionTitle
           title="What I Offer"
           subtitle="Custom frontend development, UI design, performance tuning, and SEO optimization using modern web technologies"

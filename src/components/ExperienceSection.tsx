@@ -72,8 +72,11 @@ export default function ExperienceSection() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section id="experience" className="py-20 bg-black">
-      <div className="container mx-auto px-4">
+    <section
+      id="experience"
+      className="max-w-[2150px] mx-auto 2xl:px-16 md:px-4 py-20 bg-black"
+    >
+      <div className="px-4">
         <SectionTitle
           title="Work Experience"
           subtitle="My journey across roles, real-world contributions, and hands-on achievements in web development"

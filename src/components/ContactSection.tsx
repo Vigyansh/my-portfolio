@@ -45,8 +45,11 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-black">
-      <div className="container mx-auto px-4">
+    <section
+      id="contact"
+      className="max-w-[2150px] mx-auto 2xl:px-16 md:px-4 py-20 bg-black"
+    >
+      <div className="px-4">
         <SectionTitle
           title="Get in Touch"
           subtitle="Let’s create something impactful together"

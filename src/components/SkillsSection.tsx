@@ -85,8 +85,11 @@ const SkillsSection = () => {
   };
 
   return (
-    <section id="skills" className="my-16 bg-black">
-      <div className="px-4 md:px-6 lg:px-16 py-12">
+    <section
+      id="skills"
+      className="max-w-[2150px] mx-auto 2xl:px-16 md:px-4 py-20 bg-black"
+    >
+      <div className="px-4">
         <SectionTitle
           title="Technical Skills & Tools"
           subtitle="Proficient in modern frameworks, libraries, and workflows for frontend development and UI engineering"
