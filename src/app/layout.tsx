@@ -5,7 +5,7 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'], display: 'swap' }); // important for perf
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://my-portfolio-vigyansh-chughs-projects.vercel.app'), // Replace with your real domain
+  metadataBase: new URL('https://my-portfolio-vigyansh-chughs-projects.vercel.app'), // Replace with real domain
   title: 'Vigyansh Chugh | Front-End Developer Portfolio',
   description:
     'Portfolio of Vigyansh Chugh, a front-end developer based in Sydney, Australia, specializing in React.js, Next.js, and Tailwind CSS.',
